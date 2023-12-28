@@ -37,5 +37,8 @@ done
 
 
 # creat riscv64.patch
-git diff --no-prefix PKGBUILD | tail -n +3 > riscv64.patch
-cp -v riscv64.patch "$patch_dir/"
+git diff --no-prefix PKGBUILD | tail -n +3 > "$patch_dir/riscv64.patch"
+
+# remain riscv64 in arch array after making patch
+! grep -E -q '^arch=\(.*?(any|riscv64).*?\)' PKGBUILD &&
+  sed -i -E -e 's|^arch=\((.*)\)|arch=\(\1 riscv64\)|' PKGBUILD
