@@ -18,9 +18,6 @@ patch_dir="$pkg_dir/patch"
 pkgname="$(basename -- "$pkg_dir")"
 
 
-# restore arch array if modified
-sed -i -E -e 's|^arch=\((.*?)( riscv64)+\)|arch=\(\1\)|' PKGBUILD
-
 
 [[ ! -e ./PKGBUILD ]] && die "No PKGBUILD in current directory"
 # shellcheck disable=1091
@@ -37,5 +34,7 @@ done
 
 
 # creat riscv64.patch
-git diff --no-prefix PKGBUILD | tail -n +3 > riscv64.patch
+git diff --no-prefix PKGBUILD | sed -E -e 's|^arch=\((.*?)( riscv64)+\)|arch=\(\1\)|' | tail -n +3 > riscv64.patch
+
+
 cp -v riscv64.patch "$patch_dir/"
