@@ -6,7 +6,7 @@ set -e
 ##
 
 # scripts source dir
-_RV_SOURCE_DIR=${_RV_SOURCE_DIR:-$(dirname -- $(realpath -- "$0"))}
+_RV_SOURCE_DIR=${_RV_SOURCE_DIR:-$(dirname -- $(realpath -- "${BASH_SOURCE[0]}"))}
 source "${_RV_SOURCE_DIR}/config.sh"
 source "${_RV_SOURCE_DIR}/util.sh"
 
