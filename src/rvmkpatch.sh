@@ -31,7 +31,7 @@ sed -i -E -e 's|^arch=\((.*?)( riscv64)+\)|arch=\(\1\)|' PKGBUILD
 
 # copy patches to patch/ dir
 # shellcheck disable=2154
-for patch in $source; do
+for patch in ${source[@]}; do
   [[ -e "$patch" ]] && cp -rv "$patch" "$patch_dir/"
 done
 
