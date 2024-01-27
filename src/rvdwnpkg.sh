@@ -65,6 +65,10 @@ git checkout "$latest_tag"
 
 
 # copy patch from riscv repository if have
+# update repo before copy patch
+pushd "$RV_PATCH_REPO"
+  git checkout master && git pull
+popd
 [[ -d "$RV_PATCH_REPO/$pkgname" ]] &&
   cp -r "$RV_PATCH_REPO/$pkgname" "orig-patches" &&
   cp -r orig-patches/* . && 
