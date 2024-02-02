@@ -32,11 +32,11 @@ while (( $# )); do
       exit 0
       ;;
     -*)
-			die "invalid argument: %s" "$1"
-			;;
-		*)
-			break
-			;;
+      die "invalid argument: %s" "$1"
+      ;;
+    *)
+      break
+      ;;
   esac
 done
 

@@ -55,11 +55,11 @@ while (( $# )); do
       break
       ;;
     -*)
-			die "invalid argument: %s" "$1"
-			;;
-		*)
-			break
-			;;
+      die "invalid argument: %s" "$1"
+      ;;
+    *)
+      break
+      ;;
   esac
 done
 
