@@ -32,7 +32,9 @@ sync_patches() {
   
   pushd "$patch_repo" &>/dev/null
   msg 'Reset all files to origin/master...'
-  git checkout master '*'
+  git restore --staged '*'
+  git reset --hard master
+  git clean -ff
   git checkout master
   msg 'Updating local master branch...'
   git pull
