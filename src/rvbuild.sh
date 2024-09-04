@@ -64,6 +64,11 @@ while (( $# )); do
 done
 
 [[ -n "$RV_CACHE" ]] || die "Must set pacman cache dir"
+if ! [[ -d "$RV_CACHE" ]]; then
+  msg_warn "$RV_CACHE does not exist!"
+  msg "Creating $RV_CACHE dir..."
+  mkdir -p "$RV_CACHE"
+fi
 
 # set defautl extra-riscv64-build args
 extra_riscv_build_args+=(
