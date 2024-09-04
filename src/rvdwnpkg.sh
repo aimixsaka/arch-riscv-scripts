@@ -40,6 +40,8 @@ done
 shift $(( OPTIND - 1 ))
 
 (( $# < 1 )) && die 'You must specify a pkgname.'
+: ${RV_PATCH_REPO:?env 'RV_PATCH_REPO' not set! You need to set it to the location of rv patch repo}
+
 pkgname="$1"
 
 if [[ -d "$pkgname" ]]; then
